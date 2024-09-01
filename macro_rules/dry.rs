@@ -33,6 +33,7 @@ op!(add_assign, Add, +=, add);
 op!(mul_assign, Mul, *=, mul);
 op!(sub_assign, Sub, -=, sub);
 
+#[allow(unused_imports)]
 mod test {
     use std::iter;
     macro_rules! test {

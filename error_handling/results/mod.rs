@@ -1,3 +1,9 @@
+pub mod map_for_result;
+pub mod aliases_for_result;
+pub mod early_return;
+pub mod question_mark_operator;
+
+use std::num::ParseIntError;
 // Result is a richer version of the Option type that describes possible error instead of possible absence.
     // - i.e., Result<T, E> could have one of two outcomes:
         // - Ok(T): An element T was found
@@ -12,10 +18,21 @@ fn multiply(first_number_str: &str, second_number_str: &str) -> i32 {
     first_number * second_number
 }
 
-pub fn main() {
+
+// main() can return a Result
+pub fn main() -> Result<(), ParseIntError> {
     let twenty = multiply("10", "2");
     println!("double is {}", twenty);
 
-    let tt = multiply("t", "2");
-    println!("double is {}", tt);
+    // below let statement will cause program to panic
+    // let tt = multiply("t", "2");
+    // println!("double is {}", tt);
+
+    let number_str = "10";
+    let number = match number_str.parse::<i32>() {
+        Ok(number)  => number,
+        Err(e) => return Err(e),
+    };
+    println!("{}", number);
+    Ok(())
 }

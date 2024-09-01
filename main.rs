@@ -118,5 +118,16 @@ fn main() {
     // error_handling::option_unwrap::combinator_map::main();
     // error_handling::option_unwrap::combinator_and_then::main();
     // error_handling::option_unwrap::option_default::main();
-    error_handling::results::main();
+    // let _a = error_handling::results::main();
+    // error_handling::results::map_for_result::main();
+    // error_handling::results::aliases_for_result::main();
+    // error_handling::results::early_return::main();
+    // error_handling::multiple_error_types::main();
+    // error_handling::multiple_error_types::pull_result_from_option::main();
+    // error_handling::multiple_error_types::own_error_type::main();
+    // error_handling::multiple_error_types::boxing_errors::main();
+    // error_handling::multiple_error_types::use_question_mark::main();
+    // error_handling::multiple_error_types::wrapping_errors::main();
+    error_handling::multiple_error_types::iterate_over_results::main();
+
 }
