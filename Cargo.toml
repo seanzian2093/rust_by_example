@@ -1,0 +1,12 @@
+[package]
+name = "rust_by_example"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# hello_world = { path = "./hello_world" }
+rand =  "*"
+
+[[bin]]
+name = "rust_by_example"
+path = "main.rs"
