@@ -13,6 +13,9 @@ pub mod scoping_rules;
 pub mod traits;
 pub mod macro_rules;
 pub mod error_handling;
+pub mod std_lib_types;
+pub mod std_misc;
+pub mod testing;
 fn main() {
     // hello_world::formatted_print::main();
 
@@ -128,6 +131,30 @@ fn main() {
     // error_handling::multiple_error_types::boxing_errors::main();
     // error_handling::multiple_error_types::use_question_mark::main();
     // error_handling::multiple_error_types::wrapping_errors::main();
-    error_handling::multiple_error_types::iterate_over_results::main();
-
+    // error_handling::multiple_error_types::iterate_over_results::main();
+    // std_lib_types::box_stack_heap::main();
+    // std_lib_types::vectors::main();
+    // std_lib_types::strings::main();
+    // std_lib_types::options::main();
+    // std_lib_types::results::main();
+    // std_lib_types::panics::main();
+    // std_lib_types::hashmaps::main();
+    // std_lib_types::hashmaps::key_types::main();
+    // std_lib_types::hashmaps::hashsets::main();
+    // std_lib_types::reference_count::main();
+    // std_lib_types::atomically_ref_counted::main();
+    // std_misc::threads::main();
+    // std_misc::threads::testcase::main();
+    // std_misc::channels::main();
+    // std_misc::paths::main();
+    // std_misc::file_io::open::main();
+    // std_misc::file_io::create::main();
+    // std_misc::file_io::read_lines::main();
+    // std_misc::child_process::main();
+    // std_misc::child_process::pipes::main();
+    // std_misc::child_process::wait::main();
+    // std_misc::filesystem_operations::main();
+    // std_misc::program_arguments::main();
+    // std_misc::foreign_function_interface::main();
+    testing::unit_tests::main();
 }
