@@ -1,44 +1,52 @@
 // match is a valid method for handling Options. However, you may eventually find heavy usage tedious, especially with operations only valid with an input
-    // - in these cases, combinators can be used to manage control flow in a modular fashion.
-    // - Option has a built in method called map(), a combinator for the simple mapping of Some -> Some and None -> None
-    // -  Multiple map() calls can be chained together for even more flexibility.
-    // - e.g., process() replaces all functions previous to it while staying compact.
+// - in these cases, combinators can be used to manage control flow in a modular fashion.
+// - Option has a built in method called map(), a combinator for the simple mapping of Some -> Some and None -> None
+// -  Multiple map() calls can be chained together for even more flexibility.
+// - e.g., process() replaces all functions previous to it while staying compact.
 #![allow(dead_code)]
 
-#[derive(Debug)] enum Food { Apple, Carrot, Potato }
+#[derive(Debug)]
+enum Food {
+    Apple,
+    Carrot,
+    Potato,
+}
 
-#[derive(Debug)] struct Peeled(Food);
-#[derive(Debug)] struct Chopped(Food);
-#[derive(Debug)] struct Cooked(Food);
+#[derive(Debug)]
+struct Peeled(Food);
+#[derive(Debug)]
+struct Chopped(Food);
+#[derive(Debug)]
+struct Cooked(Food);
 
 // Peeling food
-    // - if there isn't any, then return `None`.
-    // - otherwise, return the peeled food.
+// - if there isn't any, then return `None`.
+// - otherwise, return the peeled food.
 fn peel(food: Option<Food>) -> Option<Peeled> {
     match food {
         Some(food) => Some(Peeled(food)),
-        None       => None,
+        None => None,
     }
 }
 
 // Chopping food
-    // - if there isn't any, then return `None`.
-    // - otherwise, return the chopped food.
+// - if there isn't any, then return `None`.
+// - otherwise, return the chopped food.
 fn chop(peeled: Option<Peeled>) -> Option<Chopped> {
     match peeled {
         Some(Peeled(food)) => Some(Chopped(food)),
-        None               => None,
+        None => None,
     }
 }
 
 // Cooking food
-    // - Here, we showcase `map()` instead of `match` for case handling.
+// - Here, we showcase `map()` instead of `match` for case handling.
 fn cook(chopped: Option<Chopped>) -> Option<Cooked> {
     chopped.map(|Chopped(food)| Cooked(food))
 }
 
 // A function to peel, chop, and cook food all in sequence.
-    // - We chain multiple uses of `map()` to simplify the code.
+// - We chain multiple uses of `map()` to simplify the code.
 fn process(food: Option<Food>) -> Option<Cooked> {
     food.map(|f| Peeled(f))
         .map(|Peeled(f)| Chopped(f))
@@ -49,7 +57,7 @@ fn process(food: Option<Food>) -> Option<Cooked> {
 fn eat(food: Option<Cooked>) {
     match food {
         Some(food) => println!("Mmm. I love {:?}", food),
-        None       => println!("Oh no! It wasn't edible."),
+        None => println!("Oh no! It wasn't edible."),
     }
 }
 
@@ -67,4 +75,3 @@ pub fn main() {
     eat(cooked_carrot);
     eat(cooked_potato);
 }
-

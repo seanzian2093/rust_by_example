@@ -1,7 +1,7 @@
 // The create function opens a file in write-only mode
-    // - returns a File type
-    // - if the file already existed, the old content is destroyed
-    // - Otherwise, a new file is created.
+// - returns a File type
+// - if the file already existed, the old content is destroyed
+// - Otherwise, a new file is created.
 static LOREM_IPSUM: &str =
     "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,

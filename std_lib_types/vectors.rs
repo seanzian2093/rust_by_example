@@ -1,12 +1,12 @@
 // Vectors are re-sizable arrays. Like slices, their size is not known at compile time
-    // - but they can grow or shrink at any time
-    // - a vector is represented using 3 parameters:
-        // - pointer to the data
-        // - length
-        // - capacity
+// - but they can grow or shrink at any time
+// - a vector is represented using 3 parameters:
+// - pointer to the data
+// - length
+// - capacity
 // The capacity indicates how much memory is reserved for the vector
-    // - the vector can grow as long as the length is smaller than the capacity
-    // - when this threshold needs to be surpassed, the vector is reallocated with a larger capacity.
+// - the vector can grow as long as the length is smaller than the capacity
+// - when this threshold needs to be surpassed, the vector is reallocated with a larger capacity.
 pub fn main() {
     // Iterators can be collected into vectors
     let collected_iterator: Vec<i32> = (0..10).collect();

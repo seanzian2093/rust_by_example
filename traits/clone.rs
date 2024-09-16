@@ -1,7 +1,7 @@
 #![allow(dead_code)]
 // When dealing with resources, the default behavior is to transfer them during assignments or function calls
-    // - However, sometimes we need to make a copy of the resource as well.
-    // - the `Clone` trait helps us do exactly this. Most commonly, we can use the `.clone()` method defined by the Clone trait.
+// - However, sometimes we need to make a copy of the resource as well.
+// - the `Clone` trait helps us do exactly this. Most commonly, we can use the `.clone()` method defined by the Clone trait.
 
 // A unit struct without resources
 #[derive(Debug, Clone, Copy)]
@@ -16,7 +16,7 @@ pub fn main() {
     // Instantiate `Unit`
     let unit = Unit;
     // Copy `Unit`, there are no resources to move
-        // - `Copy` trait is implemented on `Unit`
+    // - `Copy` trait is implemented on `Unit`
     let copied_unit = unit;
 
     // Both `Unit`s can be used independently
@@ -24,8 +24,8 @@ pub fn main() {
     println!("copy: {:?}", copied_unit);
 
     // Instantiate `Pair`
-        // - `Copy` trait is not implemented on `Unit`
-        // - cannot by derive macro
+    // - `Copy` trait is not implemented on `Unit`
+    // - cannot by derive macro
     let pair = Pair(Box::new(1), Box::new(2));
     println!("original: {:?}", pair);
 

@@ -1,8 +1,8 @@
 // ? was previously explained as either unwrap or return Err(err)
-    // - actually means unwrap or return Err(From::from(err))
-    // - since From::from is a conversion utility between different types
-    // - this means that if you ? where the error is convertible to the return type, it will convert automatically.
-    // - e.g., rewritte the example in `own_error_type.rs`
+// - actually means unwrap or return Err(From::from(err))
+// - since From::from is a conversion utility between different types
+// - this means that if you ? where the error is convertible to the return type, it will convert automatically.
+// - e.g., rewritte the example in `own_error_type.rs`
 use std::error;
 use std::fmt;
 
@@ -30,7 +30,7 @@ fn double_first(vec: Vec<&str>) -> Result<i32> {
 
 fn print(result: Result<i32>) {
     match result {
-        Ok(n)  => println!("The first doubled is {}", n),
+        Ok(n) => println!("The first doubled is {}", n),
         Err(e) => println!("Error: {}", e),
     }
 }

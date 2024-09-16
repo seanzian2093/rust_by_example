@@ -37,7 +37,7 @@ mod checked {
         }
     }
 }
-    // Intermediate function using ? operator
+// Intermediate function using ? operator
 use checked::*;
 fn op_(x: f64, y: f64) -> MathResult {
     // if `div` "fails", then `DivisionByZero` will be `return`ed
@@ -66,21 +66,24 @@ fn op(x: f64, y: f64) -> f64 {
 
 fn op2(x: f64, y: f64) -> f64 {
     match op_(x, y) {
-        Err(why) => panic!("{}", match why {
-            MathError::NonPositiveLogarithm
-                => "logarithm of non-positive number",
-            MathError::DivisionByZero
-                => "division by zero",
-            MathError::NegativeSquareRoot
-                => "square root of negative number",
-        }),
-        Ok(value) => { println!("{}", value); value },
+        Err(why) => panic!(
+            "{}",
+            match why {
+                MathError::NonPositiveLogarithm => "logarithm of non-positive number",
+                MathError::DivisionByZero => "division by zero",
+                MathError::NegativeSquareRoot => "square root of negative number",
+            }
+        ),
+        Ok(value) => {
+            println!("{}", value);
+            value
+        }
     }
 }
 
 pub fn main() {
     // Will this fail?
-        // - yes so to comment it out to fun the next `println!`
+    // - yes so to comment it out to fun the next `println!`
     // println!("{}", op(1.0, 10.0));
     // Will this fail?
     println!("{}", op2(1.0, 10.0));

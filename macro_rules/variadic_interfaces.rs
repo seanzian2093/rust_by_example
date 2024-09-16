@@ -1,6 +1,6 @@
 // A variadic interface takes an arbitrary number of arguments
-    // - e.g., println! can take an arbitrary number of arguments, as determined by the format string.
-    // - We can extend our calculate! macro from the previous section to be variadic:
+// - e.g., println! can take an arbitrary number of arguments, as determined by the format string.
+// - We can extend our calculate! macro from the previous section to be variadic:
 macro_rules! calculate {
     // The pattern for a single `eval`
     (eval $e:expr) => {

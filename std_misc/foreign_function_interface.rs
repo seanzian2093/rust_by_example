@@ -1,12 +1,12 @@
 // Rust provides a Foreign Function Interface (FFI) to C libraries
-    // - foreign functions must be declared inside an extern block 
-    // - annotated with a #[link] attribute containing the name of the foreign library.
+// - foreign functions must be declared inside an extern block
+// - annotated with a #[link] attribute containing the name of the foreign library.
 use std::fmt;
 
 // this extern block links to the libm library
 #[cfg(target_family = "windows")]
 #[link(name = "msvcrt")]
-extern {
+extern "C" {
     // this is a foreign function
     // that computes the square root of a single precision complex number
     fn csqrtf(z: Complex) -> Complex;
@@ -15,7 +15,7 @@ extern {
 }
 #[cfg(target_family = "unix")]
 #[link(name = "m")]
-extern {
+extern "C" {
     // this is a foreign function that computes the square root of a single precision complex number
     fn csqrtf(z: Complex) -> Complex;
 
@@ -23,7 +23,7 @@ extern {
 }
 
 // It is common to write safe wrappers around them.
-    // - ince calling foreign functions is considered unsafe,
+// - ince calling foreign functions is considered unsafe,
 fn cos(z: Complex) -> Complex {
     unsafe { ccosf(z) }
 }

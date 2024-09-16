@@ -1,6 +1,6 @@
-// `print_refs` takes two references to `i32` which 
-    // - have different lifetimes `'a` and `'b`
-    // - these two lifetimes must both be at least as long as the function `print_refs`.
+// `print_refs` takes two references to `i32` which
+// - have different lifetimes `'a` and `'b`
+// - these two lifetimes must both be at least as long as the function `print_refs`.
 fn print_refs<'a, 'b>(x: &'a i32, y: &'b i32) {
     println!("x is {} and y is {}", x, y);
 }
@@ -11,21 +11,21 @@ fn failed_borrow<'a>() {
 
     // ERROR: `_x` does not live long enough
     // let _y: &'a i32 = &_x;
-    // - attempting to use the lifetime `'a` as an explicit type annotation inside the function will fail 
-        // - because the lifetime of `&_x` is shorter than that of `_y`.
-        // - a short lifetime cannot be coerced into a longer one.
+    // - attempting to use the lifetime `'a` as an explicit type annotation inside the function will fail
+    // - because the lifetime of `&_x` is shorter than that of `_y`.
+    // - a short lifetime cannot be coerced into a longer one.
 }
 
 pub fn main() {
     // Create variables to be borrowed below.
     let (four, nine) = (4, 9);
-    
+
     // Borrows (`&`) of both variables are passed into the function.
     print_refs(&four, &nine);
-        // - any input which is borrowed must outlive the borrower. 
-            // - in other words, the lifetime of `four` and `nine` must be longer than that of `print_refs`.
-    
+    // - any input which is borrowed must outlive the borrower.
+    // - in other words, the lifetime of `four` and `nine` must be longer than that of `print_refs`.
+
     failed_borrow();
     // `failed_borrow` contains no references to force `'a` to be longer than the lifetime of the function,
-        // - but `'a` is longer because the lifetime is never constrained, it defaults to `'static`.
+    // - but `'a` is longer because the lifetime is never constrained, it defaults to `'static`.
 }

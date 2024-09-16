@@ -1,18 +1,18 @@
 // The Path struct represents file paths in the underlying filesystem. There are two flavors of Path:
-    // - `posix::Path`, for UNIX-like systems, and 
-    // - `windows::Path`, for Windows
+// - `posix::Path`, for UNIX-like systems, and
+// - `windows::Path`, for Windows
 // The prelude exports the appropriate platform-specific Path variant.
-// A Path 
-    // - can be created from an OsStr, and provides several methods to get information from the file/directory the path points to
-    // - is immutable
-        // - the owned version of Path is PathBuf
-        // - the relation between Path and PathBuf is similar to that of str and String: 
-            // -a PathBuf can be mutated in-place, and can be dereferenced to a Path.
-    // - is not internally represented as an UTF-8 string, but instead is stored as an OsString
-        // - therefore, converting a Path to a &str is not free and may fail (an Option is returned)
-        // - however, a Path can be freely converted to 
-            // - an OsString using into_os_string 
-            // - an &OsStr using as_os_str
+// A Path
+// - can be created from an OsStr, and provides several methods to get information from the file/directory the path points to
+// - is immutable
+// - the owned version of Path is PathBuf
+// - the relation between Path and PathBuf is similar to that of str and String:
+// -a PathBuf can be mutated in-place, and can be dereferenced to a Path.
+// - is not internally represented as an UTF-8 string, but instead is stored as an OsString
+// - therefore, converting a Path to a &str is not free and may fail (an Option is returned)
+// - however, a Path can be freely converted to
+// - an OsString using into_os_string
+// - an &OsStr using as_os_str
 
 use std::path::Path;
 
@@ -39,4 +39,3 @@ pub fn main() {
         Some(s) => println!("new path is {}", s),
     }
 }
-            

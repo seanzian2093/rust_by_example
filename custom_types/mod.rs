@@ -1,4 +1,4 @@
-pub mod structures;
+pub mod constants;
 pub mod enums;
 pub mod linked_list;
-pub mod constants;
+pub mod structures;

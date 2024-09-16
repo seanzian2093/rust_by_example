@@ -1,7 +1,7 @@
-pub mod methods;
 pub mod closures;
-pub mod high_order_functions;
 pub mod diverging_functions;
+pub mod high_order_functions;
+pub mod methods;
 // Unlike C/C++, there's no restriction on the order of function definitions
 pub fn main() {
     // - we can use this function here, and define it somewhere later

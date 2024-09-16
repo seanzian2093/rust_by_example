@@ -1,20 +1,18 @@
-// The for in construct can be used to iterate through an Iterator. 
+// The for in construct can be used to iterate through an Iterator.
 
-    // - One of the easiest ways to create an iterator is to use the range notation `a..b`. 
-        // - `a..b` yields values from a (inclusive) to b (exclusive) in steps of one
-        // - `a..=b` yields values from a (inclusive) to b (inclusive) in steps of one
-    // - by default the for loop will apply the `into_iter`` function to the collection but there are more 
-        // - `iter` borrows immutable
-        // - `into_iter` consume collection and take ownership
-        // - `iter_mut` borrows mutably 
-
-
+// - One of the easiest ways to create an iterator is to use the range notation `a..b`.
+// - `a..b` yields values from a (inclusive) to b (exclusive) in steps of one
+// - `a..=b` yields values from a (inclusive) to b (inclusive) in steps of one
+// - by default the for loop will apply the `into_iter`` function to the collection but there are more
+// - `iter` borrows immutable
+// - `into_iter` consume collection and take ownership
+// - `iter_mut` borrows mutably
 
 pub fn main() {
     // `n` will take the values: 1, 2, ..., 100 in each iteration
     for n in 1..101 {
-        // or 
-    // for n in 1..=100 {
+        // or
+        // for n in 1..=100 {
         if n % 15 == 0 {
             println!("fizzbuzz");
         } else if n % 3 == 0 {
@@ -36,7 +34,7 @@ pub fn main() {
             _ => println!("Hello {}", name),
         }
     }
-    
+
     println!("names: {:?}", names);
 
     // into_iter
@@ -46,10 +44,10 @@ pub fn main() {
             _ => println!("Hello {}", name),
         }
     }
-    
-        // - names is unusable after into_iter
+
+    // - names is unusable after into_iter
     // println!("names: {:?}", names);
-    
+
     // iter_mut
     let mut names = vec!["Bob", "Frank", "Ferris"];
 
@@ -61,5 +59,4 @@ pub fn main() {
     }
 
     println!("names: {:?}", names);
-
 }

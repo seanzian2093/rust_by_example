@@ -1,19 +1,19 @@
-// Most unit tests 
-    // - go into a tests mod with the #[cfg(test)] attribute
-    // - test functions are marked with the #[test] attribute.  
+// Most unit tests
+// - go into a tests mod with the #[cfg(test)] attribute
+// - test functions are marked with the #[test] attribute.
 // Tests fail when something in the test function panics. There are some helper macros:
-    // - assert!(expression) - panics if expression evaluates to false.
-    // - assert_eq!(left, right) - testing left and right expressions for equality 
-    // - assert_ne!(left, right) - testing left and right expressions for inequality
+// - assert!(expression) - panics if expression evaluates to false.
+// - assert_eq!(left, right) - testing left and right expressions for equality
+// - assert_ne!(left, right) - testing left and right expressions for inequality
 // in Rust 2018, your unit tests can return Result<()>, which lets you use ? in them
-    // - this can make them much more concise.
+// - this can make them much more concise.
 
 // To check functions that should panic under certain circumstances, use attribute #[should_panic]
-    // - this attribute accepts optional parameter expected = with the text of the panic message
-    // - if your function can panic in multiple ways, it helps make sure your test is testing the correct panic.
+// - this attribute accepts optional parameter expected = with the text of the panic message
+// - if your function can panic in multiple ways, it helps make sure your test is testing the correct panic.
 
 // Tests can be marked with the #[ignore] attribute to exclude some tests
-    // - Or to run them with command cargo test -- --ignored
+// - Or to run them with command cargo test -- --ignored
 pub fn add(a: i32, b: i32) -> i32 {
     a + b
 }
@@ -48,8 +48,6 @@ pub fn divide_non_zero_result(a: u32, b: u32) -> u32 {
     }
     a / b
 }
-
-
 
 #[cfg(test)]
 mod tests {

@@ -1,8 +1,8 @@
 // Within the destructuring of a single variable, both by-move and by-reference pattern bindings can be used at the same time.
-    // - doing this will result in a partial move of the variable, which means that 
-    // - parts of the variable will be moved while other parts stay. 
-    // - in such a case, the parent variable cannot be used afterwards as a whole, 
-    // - however the parts that are only referenced (and not moved) can still be used.
+// - doing this will result in a partial move of the variable, which means that
+// - parts of the variable will be moved while other parts stay.
+// - in such a case, the parent variable cannot be used afterwards as a whole,
+// - however the parts that are only referenced (and not moved) can still be used.
 
 pub fn main() {
     #[derive(Debug)]

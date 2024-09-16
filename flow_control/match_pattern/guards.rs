@@ -19,7 +19,7 @@ pub fn main() {
     match_temperature(temperature);
 
     // compiler won't take guard conditions into account when checking if all patterns are covered by the match expression
-        // - for below match, logically all patterns are covered but we still need the `_` condition
+    // - for below match, logically all patterns are covered but we still need the `_` condition
     let number: u8 = 4;
     match number {
         i if i == 0 => println!("Zero"),

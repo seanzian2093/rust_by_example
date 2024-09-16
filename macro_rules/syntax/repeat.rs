@@ -1,8 +1,8 @@
 // Macros can use
-    // - + in the argument list to indicate that an argument may repeat at least once, or
-    // - *, to indicate that the argument may repeat zero or more times.
-    // - e.g., surrounding the matcher with $(...),+ will match one or more expression, separated by commas
-    // - note that the semicolon is optional on the last case
+// - + in the argument list to indicate that an argument may repeat at least once, or
+// - *, to indicate that the argument may repeat zero or more times.
+// - e.g., surrounding the matcher with $(...),+ will match one or more expression, separated by commas
+// - note that the semicolon is optional on the last case
 
 // `find_min!` will calculate the minimum of any number of arguments.
 macro_rules! find_min {

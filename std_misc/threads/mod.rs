@@ -1,6 +1,6 @@
 pub mod testcase;
 // Rust provides a mechanism for spawning native OS threads via the spawn function
-    // - the argument of this function is a moving closure
+// - the argument of this function is a moving closure
 use std::thread;
 
 const NTHREADS: u32 = 10;
@@ -19,7 +19,7 @@ pub fn main() {
 
     for child in children {
         // Wait for the threads to finish. Returns a result.
-            // - order is not deterministic
+        // - order is not deterministic
         let _ = child.join();
     }
 }

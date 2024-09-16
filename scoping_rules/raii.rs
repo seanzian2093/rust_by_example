@@ -1,8 +1,8 @@
 // RAII, aka Resource Acquisition is Initialization
-// The notion of a destructor in Rust is provided through the Drop trait. 
-    // - the destructor is called when the resource goes out of scope. 
-    // - this trait is not required to be implemented for every type
-    // - only implement it for your type if you require its own destructor logic.
+// The notion of a destructor in Rust is provided through the Drop trait.
+// - the destructor is called when the resource goes out of scope.
+// - this trait is not required to be implemented for every type
+// - only implement it for your type if you require its own destructor logic.
 
 fn create_box() {
     // Allocate an integer on the heap

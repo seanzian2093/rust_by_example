@@ -13,7 +13,7 @@ pub fn main() {
     let character = integer as char;
 
     // Error! There are limitations in conversion rules.
-        // A float cannot be directly converted to a char.
+    // A float cannot be directly converted to a char.
     // let character = decimal as char;
     // FIXME ^ Comment out this line
 
@@ -71,7 +71,10 @@ pub fn main() {
         // 300.0 as u8 is 44
         println!(" 300.0 as u8 is : {}", 300.0_f32.to_int_unchecked::<u8>());
         // -100.0 as u8 is 156
-        println!("-100.0 as u8 is : {}", (-100.0_f32).to_int_unchecked::<u8>());
+        println!(
+            "-100.0 as u8 is : {}",
+            (-100.0_f32).to_int_unchecked::<u8>()
+        );
         // nan as u8 is 0
         println!("   nan as u8 is : {}", f32::NAN.to_int_unchecked::<u8>());
     }

@@ -3,8 +3,8 @@ use std::str::FromStr;
 fn get_count_item(s: &str) -> (u64, &str) {
     let mut it = s.split(' ');
     // if `let` binding succeeded then do nothing, except the biding
-        //- otherwise execute the `else` block 
-    
+    //- otherwise execute the `else` block
+
     // Use Some() for Option
     let (Some(count_str), Some(item)) = (it.next(), it.next()) else {
         panic!("Can't segment count item pair: '{s}'");

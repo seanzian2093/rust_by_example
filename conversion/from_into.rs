@@ -1,5 +1,5 @@
-/* 
-If you have implemented the From trait for your type, Into will call it when necessary. Note, however, that the converse is not true: 
+/*
+If you have implemented the From trait for your type, Into will call it when necessary. Note, however, that the converse is not true:
 implementing Into for your type will not automatically provide it with an implementation of From. */
 #![allow(unused_variables)]
 use std::convert::From;
@@ -33,5 +33,4 @@ pub fn main() {
     // Try removing the type annotation
     let num: Number = int.into();
     println!("My number is {:?}", num);
-
 }

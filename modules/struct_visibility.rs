@@ -1,7 +1,7 @@
-// Structs have an extra level of visibility with their fields. 
-    // - The visibility defaults to private, and can be overridden with the pub modifier. 
-    // - This visibility only matters when a struct is accessed from outside the module where it is defined, and 
-    // - has the goal of hiding information (encapsulation).
+// Structs have an extra level of visibility with their fields.
+// - The visibility defaults to private, and can be overridden with the pub modifier.
+// - This visibility only matters when a struct is accessed from outside the module where it is defined, and
+// - has the goal of hiding information (encapsulation).
 mod my {
     // A public struct with a public field of generic type `T`
     pub struct OpenBox<T> {
@@ -17,16 +17,16 @@ mod my {
     impl<T> ClosedBox<T> {
         // A public constructor method
         pub fn new(contents: T) -> ClosedBox<T> {
-            ClosedBox {
-                contents: contents,
-            }
+            ClosedBox { contents: contents }
         }
     }
 }
 
 pub fn main() {
     // Public structs with public fields can be constructed as usual
-    let open_box = my::OpenBox { contents: "public information" };
+    let open_box = my::OpenBox {
+        contents: "public information",
+    };
 
     // and their fields can be normally accessed.
     println!("The open box contains: {}", open_box.contents);

@@ -1,8 +1,7 @@
-
 pub fn main() {
     while_let(7);
     while_let(10);
-    
+
     println!();
     loop_match(7);
     loop_match(10);
@@ -11,7 +10,7 @@ pub fn main() {
 fn while_let(arg: i32) {
     // Make `optional` of type `Option<i32>`
     let mut optional = Some(arg);
-    
+
     // This reads: "while `let` destructures `optional` into `Some(i)`, evaluate the block (`{}`). Else `break`.
     while let Some(i) = optional {
         if i > 9 {
@@ -44,10 +43,11 @@ fn loop_match(arg: i32) {
                     optional = Some(i + 1);
                 }
                 // ^ Requires 3 indentations!
-            },
+            }
             // Use explicit `break` to quit the loop when the destructure fails:
-            _ => { break; }
+            _ => {
+                break;
+            }
         }
     }
-
 }

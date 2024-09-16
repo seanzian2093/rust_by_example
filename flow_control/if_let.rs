@@ -3,22 +3,20 @@
 pub fn main() {
     if_let();
     if_let_enum();
-
 }
 
 fn if_let() {
     // A awkward match statement
-        // - Make `optional` of type `Option<i32>`
+    // - Make `optional` of type `Option<i32>`
     let optional = Some(7);
     match optional {
         // - Needed 2 indentations just so we could destructure `i` from the option.
         Some(i) => {
             println!("This is a really long string and `{:?}`", i);
-        },
+        }
         // - Required because `match` is exhaustive. Doesn't it seem like wasted space?
-        _ => {},
+        _ => {}
     };
-
 
     // All have type `Option<i32>`
     let number = Some(7);
@@ -52,12 +50,11 @@ fn if_let() {
     }
 }
 
-
 // Our example enum
 enum Foo {
     Bar,
     Baz,
-    Qux(u32)
+    Qux(u32),
 }
 
 fn if_let_enum() {
@@ -65,17 +62,17 @@ fn if_let_enum() {
     let a = Foo::Bar;
     let b = Foo::Baz;
     let c = Foo::Qux(100);
-    
+
     // Variable a matches Foo::Bar
     if let Foo::Bar = a {
         println!("a is foobar");
     }
-    
+
     // Variable b does not match Foo::Bar, so this will print nothing
     if let Foo::Bar = b {
         println!("b is foobar");
     }
-    
+
     // Variable c matches Foo::Qux which has a value. Similar to Some() in the previous example
     if let Foo::Qux(value) = c {
         println!("c is {}", value);

@@ -1,6 +1,6 @@
+pub mod binding;
 pub mod desturcturing;
 pub mod guards;
-pub mod binding;
 // The first matching arm is evaluated and all possible values must be covered.
 pub fn main() {
     let number = 13;

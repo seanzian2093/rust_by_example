@@ -1,14 +1,14 @@
 // Sometimes it simplifies the code to mask all of the different errors with a single type of error
 // Rust allows us to define our own error types. In general, a "good" error type:
-    // - Represents different errors with the same type
-    // - Presents nice error messages to the user
-    // - Is easy to compare with other types
-    // - Good: Err(EmptyVec)
-    // - Bad: Err("Please use a vector with at least one element".to_owned())
-    // - Can hold information about the error
-    // - Good: Err(BadChar(c, position))
-    // - Bad: Err("+ cannot be used here".to_owned())
-    // - Composes well with other errors
+// - Represents different errors with the same type
+// - Presents nice error messages to the user
+// - Is easy to compare with other types
+// - Good: Err(EmptyVec)
+// - Bad: Err("Please use a vector with at least one element".to_owned())
+// - Can hold information about the error
+// - Good: Err(BadChar(c, position))
+// - Bad: Err("+ cannot be used here".to_owned())
+// - Composes well with other errors
 
 use std::fmt;
 
@@ -34,13 +34,13 @@ impl fmt::Display for DoubleError {
 fn double_first(vec: Vec<&str>) -> Result<i32> {
     vec.first()
         // Change the error to our new type.
-            // - `ok_err(err)` changes the caller Option<T> to Result<T,E> where
-                // - Some(v) to Ok(v) and None to Err(err)
+        // - `ok_err(err)` changes the caller Option<T> to Result<T,E> where
+        // - Some(v) to Ok(v) and None to Err(err)
         .ok_or(DoubleError)
         .and_then(|s| {
             s.parse::<i32>()
                 // Update to the new error type here also.
-                    // - `map_err(op)` changes Result<T,E1> to Result<T, E2> where E2 = op(E1)
+                // - `map_err(op)` changes Result<T,E1> to Result<T, E2> where E2 = op(E1)
                 .map_err(|_| DoubleError)
                 .map(|i| 2 * i)
         })

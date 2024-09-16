@@ -9,8 +9,8 @@ fn compare_prints<T: Debug + Display>(t: &T) {
 }
 
 // Define a function `compare_types` that takes two generic types `T` and `U`, which
-    // -`T` must implement trait `Debug`
-    // -`U` must implement trait `Debug`
+// -`T` must implement trait `Debug`
+// -`U` must implement trait `Debug`
 fn compare_types<T: Debug, U: Debug>(t: &T, u: &U) {
     println!("t: `{:?}`", t);
     println!("u: `{:?}`", u);

@@ -1,12 +1,12 @@
 #![allow(dead_code)]
 // Rust doesn't have "inheritance", but you can define a trait as being a superset of another trait
-    // - For example:
+// - For example:
 trait Person {
     fn name(&self) -> String;
 }
 
 // Person is a supertrait of Student.
-    // Implementing Student requires you to also impl Person.
+// Implementing Student requires you to also impl Person.
 trait Student: Person {
     fn university(&self) -> String;
 }
@@ -16,7 +16,7 @@ trait Programmer {
 }
 
 // CompSciStudent (computer science student) is a subtrait of both Programmer and Student
-    // - Implementing CompSciStudent requires you to impl both supertraits.
+// - Implementing CompSciStudent requires you to impl both supertraits.
 trait CompSciStudent: Programmer + Student {
     fn git_username(&self) -> String;
 }

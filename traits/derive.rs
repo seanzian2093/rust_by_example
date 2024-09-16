@@ -1,13 +1,13 @@
 #![allow(dead_code)]
 // compiler is capable of providing basic implementations for some traits via the #[derive] attribute.
-    // - These traits can still be manually implemented if a more complex behavior is required.
-    // - The following is a list of derivable traits:
-        // - Eq, PartialEq, Ord, PartialOrd, Comparison traits 
-        // - Clone, to create T from &T via a copy.
-        // - Copy, to give a type 'copy semantics' instead of 'move semantics'.
-        // - Hash, to compute a hash from &T.
-        // - Default, to create an empty instance of a data type.
-        // - Debug, to format a value using the {:?} formatter.
+// - These traits can still be manually implemented if a more complex behavior is required.
+// - The following is a list of derivable traits:
+// - Eq, PartialEq, Ord, PartialOrd, Comparison traits
+// - Clone, to create T from &T via a copy.
+// - Copy, to give a type 'copy semantics' instead of 'move semantics'.
+// - Hash, to compute a hash from &T.
+// - Default, to create an empty instance of a data type.
+// - Debug, to format a value using the {:?} formatter.
 
 // `Centimeters`, a tuple struct that can be compared
 #[derive(PartialEq, PartialOrd)]
@@ -45,12 +45,11 @@ pub fn main() {
 
     let meter = Centimeters(100.0);
 
-    let cmp =
-        if foot.to_centimeters() < meter {
-            "smaller"
-        } else {
-            "bigger"
-        };
+    let cmp = if foot.to_centimeters() < meter {
+        "smaller"
+    } else {
+        "bigger"
+    };
 
     println!("One foot is {} than one meter.", cmp);
 }

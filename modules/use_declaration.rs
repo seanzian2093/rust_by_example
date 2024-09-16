@@ -15,5 +15,4 @@ pub fn main() {
 
         println!("Leaving block");
     }
-
 }

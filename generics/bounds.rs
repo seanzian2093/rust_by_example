@@ -1,7 +1,7 @@
 #![allow(dead_code)]
 // `Debug` is a trait which implements the print marker: `{:?}`.
 // `Display` is a trait that if a type implements it, that type can be used in `println!`
-use std::fmt::{Display, Debug};
+use std::fmt::{Debug, Display};
 
 // Define a function `printer` that takes a generic type `T` which must implement trait `Display`.
 fn printer<T: Display>(t: T) {
@@ -15,51 +15,70 @@ struct S<T: Display>(T);
 trait HasArea {
     fn area(&self) -> f64;
 }
-    // - a function for trait `HasArea` that implemented on `Rectangle`
+// - a function for trait `HasArea` that implemented on `Rectangle`
 impl HasArea for Rectangle {
-    fn area(&self) -> f64 { self.length * self.height }
+    fn area(&self) -> f64 {
+        self.length * self.height
+    }
 }
 
 // Implement/derive `Debug` trait for `Rectangle`
 #[derive(Debug)]
-struct Rectangle { length: f64, height: f64 }
+struct Rectangle {
+    length: f64,
+    height: f64,
+}
 // Does not implement/derive `Debug` trait for `Triangle`
-struct Triangle  { length: f64, height: f64 }
+struct Triangle {
+    length: f64,
+    height: f64,
+}
 
 // Define a function that takes the generic `T` that must implement `Debug`. Regardless of the type, this will work properly.
 fn print_debug<T: Debug>(t: &T) {
     println!("{:?}", t);
 }
 
-// Define a function that takes the generic `T` that must implement `HasArea`. 
-    // - Any type which meets the bound can access `HasArea`'s function `area`.
-fn area<T: HasArea>(t: &T) -> f64 { t.area() }
+// Define a function that takes the generic `T` that must implement `HasArea`.
+// - Any type which meets the bound can access `HasArea`'s function `area`.
+fn area<T: HasArea>(t: &T) -> f64 {
+    t.area()
+}
 
 // A consequence of how bounds work is that even if a trait doesn't include any functionality, you can still use it as a bound
 struct Cardinal;
 struct BlueJay;
 struct Turkey;
 
-    // - an empty trait
+// - an empty trait
 trait Red {}
-    // - another empty trait
+// - another empty trait
 trait Blue {}
-    // - implement the empty traits
+// - implement the empty traits
 impl Red for Cardinal {}
 impl Blue for BlueJay {}
 
-    // - These functions are only valid for types which implement these traits.
-        // - The fact that the traits are empty is irrelevant.
-fn red<T: Red>(_: &T)   -> &'static str { "red" }
-fn blue<T: Blue>(_: &T) -> &'static str { "blue" }
-
+// - These functions are only valid for types which implement these traits.
+// - The fact that the traits are empty is irrelevant.
+fn red<T: Red>(_: &T) -> &'static str {
+    "red"
+}
+fn blue<T: Blue>(_: &T) -> &'static str {
+    "blue"
+}
 
 pub fn main() {
     // Error! `Vec<T>` does not implement `Display`. This specialization will fail.
     // let s = S(vec![1]);
 
-    let rectangle = Rectangle { length: 3.0, height: 4.0 };
-    let _triangle = Triangle  { length: 3.0, height: 4.0 };
+    let rectangle = Rectangle {
+        length: 3.0,
+        height: 4.0,
+    };
+    let _triangle = Triangle {
+        length: 3.0,
+        height: 4.0,
+    };
 
     // `Rectangle` implements `Debug` so `print_debug` works on instance of it
     print_debug(&rectangle);
@@ -69,12 +88,11 @@ pub fn main() {
     // print_debug(&_triangle);
     // println!("Area: {}", area(&_triangle));
     // ^ TODO: Try uncommenting these.
-    // | Error: Does not implement either `Debug` or `HasArea`. 
-
+    // | Error: Does not implement either `Debug` or `HasArea`.
 
     let cardinal = Cardinal;
     let blue_jay = BlueJay;
-    let _turkey   = Turkey;
+    let _turkey = Turkey;
 
     // `red()` won't work on a blue jay nor vice versa because of the bounds.
     println!("A cardinal is {}", red(&cardinal));

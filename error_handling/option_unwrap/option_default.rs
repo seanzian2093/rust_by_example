@@ -1,35 +1,39 @@
 // There is more than one way to unpack an Option and fall back on a default if it is None
-    // - to choose the one that meets our needs, we need to consider the following:
-        // - do we need eager or lazy evaluation?
-        // - do we need to keep the original empty value intact, or modify it in place?
+// - to choose the one that meets our needs, we need to consider the following:
+// - do we need eager or lazy evaluation?
+// - do we need to keep the original empty value intact, or modify it in place?
 
 // `or()` is
-    // - caller is an Option
-    // - takes an Option
-    // - return caller if caller contains value
-        // - otherwise return the argument option
+// - caller is an Option
+// - takes an Option
+// - return caller if caller contains value
+// - otherwise return the argument option
 
-    // - chainable and
-    // - eagerly evaluates its argument 
-        // -  therefore the variable passed to or is moved
-    // - e.g.
+// - chainable and
+// - eagerly evaluates its argument
+// -  therefore the variable passed to or is moved
+// - e.g.
 
 // `or_else()` is chainable, evaluates lazily, keeps empty value intact
-    // - caller is an Option
-    // - takes a closur/function as parameter, which returns an Option
-    // - return caller if caller contains value
-        //-  otherwise call the closure/function and return the resultant option
-
+// - caller is an Option
+// - takes a closur/function as parameter, which returns an Option
+// - return caller if caller contains value
+//-  otherwise call the closure/function and return the resultant option
 
 // `get_or_insert()` evaluates eagerly, modifies empty value in place
-    // - caller is an Option
-    // - takes a Generic type as parameter
-    // - if caller is None, insert/move the argument to the caller and
-        // - return a mutable ref to the contained value
+// - caller is an Option
+// - takes a Generic type as parameter
+// - if caller is None, insert/move the argument to the caller and
+// - return a mutable ref to the contained value
 #![allow(dead_code)]
-#[derive(Debug)] 
-enum Fruit { Apple, Orange, Banana, Kiwi, Lemon }
-
+#[derive(Debug)]
+enum Fruit {
+    Apple,
+    Orange,
+    Banana,
+    Kiwi,
+    Lemon,
+}
 
 pub fn main() {
     // or
@@ -42,8 +46,8 @@ pub fn main() {
     // first_available_fruit is Some(Orange)
 
     // `or` moves its argument.
-        // - in the example above, `or(orange)` returned a `Some`, so `or(apple)` was not invoked.
-        // - but the variable named `apple` has been moved regardless, and cannot be used anymore.
+    // - in the example above, `or(orange)` returned a `Some`, so `or(apple)` was not invoked.
+    // - but the variable named `apple` has been moved regardless, and cannot be used anymore.
     // println!("Variable apple was moved, so this line won't compile: {:?}", apple);
     // TODO: uncomment the line above to see the compiler error
 

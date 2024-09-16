@@ -28,7 +28,7 @@ fn inspect(event: WebEvent) {
         // Destructure `Click` into `x` and `y`.
         WebEvent::Click { x, y } => {
             println!("clicked at x={}, y={}.", x, y);
-        },
+        }
     }
 }
 
@@ -40,7 +40,7 @@ enum VeryVerboseEnumOfThingsToDoWithNumbers {
 // Creates a type alias
 type Operations = VeryVerboseEnumOfThingsToDoWithNumbers;
 
-    // - use `self`, `Self` as type alias
+// - use `self`, `Self` as type alias
 impl VeryVerboseEnumOfThingsToDoWithNumbers {
     fn run(&self, x: i32, y: i32) -> i32 {
         match self {
@@ -61,14 +61,14 @@ enum Role {
 }
 
 // C-like enum
-    // enum with implicit discriminator (starts at 0)
+// enum with implicit discriminator (starts at 0)
 enum Number {
     Zero,
     One,
     Two,
 }
 
-    // enum with explicit discriminator
+// enum with explicit discriminator
 enum Color {
     Red = 0xff0000,
     Green = 0x00ff00,
@@ -78,10 +78,10 @@ enum Color {
 pub fn main() {
     let pressed = WebEvent::KeyPress('x');
     // `to_owned()` creates an owned `String` from a string slice.
-    let pasted  = WebEvent::Paste("my text".to_owned());
-    let click   = WebEvent::Click { x: 20, y: 80 };
-    let load    = WebEvent::PageLoad;
-    let unload  = WebEvent::PageUnload;
+    let pasted = WebEvent::Paste("my text".to_owned());
+    let click = WebEvent::Click { x: 20, y: 80 };
+    let load = WebEvent::PageLoad;
+    let unload = WebEvent::PageUnload;
 
     inspect(pressed);
     inspect(pasted);
@@ -90,13 +90,13 @@ pub fn main() {
     inspect(unload);
 
     // Use Enum
-        // We can refer to each variant via its alias, not its long and inconvenient name.
+    // We can refer to each variant via its alias, not its long and inconvenient name.
     let x = Operations::Add;
     println!("Add.run(1,2) is: {}", x.run(1, 2));
 
     // Explicitly `use` each name so they are available without manual scoping.
     // use crate::custom_types::enums::Stage::{Beginner, Advanced};
-    use Stage::{Beginner, Advanced};
+    use Stage::{Advanced, Beginner};
 
     // Automatically `use` each name inside `Role`.
     // use crate::custom_types::enums::Role::*;
@@ -127,5 +127,4 @@ pub fn main() {
 
     println!("roses are #{:06x}", Color::Red as i32);
     println!("violets are #{:06x}", Color::Blue as i32);
-
 }

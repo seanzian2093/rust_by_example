@@ -1,21 +1,21 @@
 #![allow(unused_variables)]
-pub mod hello_world;
-pub mod primitives;
-pub mod custom_types;
-pub mod types;
+pub mod attributes;
 pub mod conversion;
+pub mod custom_types;
+pub mod error_handling;
 pub mod flow_control;
 pub mod functions;
-pub mod modules;
-pub mod attributes;
 pub mod generics;
-pub mod scoping_rules;
-pub mod traits;
+pub mod hello_world;
 pub mod macro_rules;
-pub mod error_handling;
+pub mod modules;
+pub mod primitives;
+pub mod scoping_rules;
 pub mod std_lib_types;
 pub mod std_misc;
 pub mod testing;
+pub mod traits;
+pub mod types;
 fn main() {
     // hello_world::formatted_print::main();
 

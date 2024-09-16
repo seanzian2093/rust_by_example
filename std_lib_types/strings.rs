@@ -1,26 +1,26 @@
 // The two most used string types in Rust are String and &str.
 
 // A String is
-    // - stored as a vector of bytes (Vec<u8>)
-    // - but guaranteed to always be a valid UTF-8 sequence
-    // - String is heap allocated, growable and not null terminated.
+// - stored as a vector of bytes (Vec<u8>)
+// - but guaranteed to always be a valid UTF-8 sequence
+// - String is heap allocated, growable and not null terminated.
 
-// &str is 
-    // - a slice (&[u8]) that always points to a valid UTF-8 sequence and
-    // - can be used to view into a String, just like &[T] is a view into Vec<T>.
+// &str is
+// - a slice (&[u8]) that always points to a valid UTF-8 sequence and
+// - can be used to view into a String, just like &[T] is a view into Vec<T>.
 
 // Generally special characters are escaped with a backslash character: \.
-    // - this way you can add any character to your string, even unprintable ones and ones that you don't know how to type
-    // - If you want a literal backslash, escape it with another one: \\
-    // - String or character literal delimiters occurring within a literal must be escaped: "\"", '\''.
+// - this way you can add any character to your string, even unprintable ones and ones that you don't know how to type
+// - If you want a literal backslash, escape it with another one: \\
+// - String or character literal delimiters occurring within a literal must be escaped: "\"", '\''.
 
-// Sometimes there are just too many characters that need to be escaped 
-    // - or it's just much more convenient to write a string out as-is
-    // - this is where raw string literals come into play
+// Sometimes there are just too many characters that need to be escaped
+// - or it's just much more convenient to write a string out as-is
+// - this is where raw string literals come into play
 
 // Want a string that's not UTF-8? (Remember, str and String must be valid UTF-8)
-    // - Or maybe you want an array of bytes that's mostly text?
-    // - Byte strings to the rescue!
+// - Or maybe you want an array of bytes that's mostly text?
+// - Byte strings to the rescue!
 
 use std::str;
 pub fn main() {
@@ -63,17 +63,18 @@ pub fn main() {
     println!("Bob says: {}", bob);
 
     // literals and escapes
-        // You can use escapes to write bytes by their hexadecimal values...
+    // You can use escapes to write bytes by their hexadecimal values...
     let byte_escape = "I'm writing \x52\x75\x73\x74!";
     println!("\nWhat are you doing\x3F (\\x3F means ?) {}", byte_escape);
 
-        // ...or Unicode code points.
+    // ...or Unicode code points.
     let unicode_codepoint = "\u{211D}";
     let character_name = "\"DOUBLE-STRUCK CAPITAL R\"";
 
-    println!("Unicode character {} (U+211D) is called {}",
-                unicode_codepoint, character_name );
-
+    println!(
+        "Unicode character {} (U+211D) is called {}",
+        unicode_codepoint, character_name
+    );
 
     let long_string = "String literals
                         can span multiple lines.
@@ -85,34 +86,33 @@ pub fn main() {
     let raw_str = r"Escapes don't work here: \x3F \u{211D}";
     println!("{}", raw_str);
 
-        // If you need quotes in a raw string, add a pair of #s
+    // If you need quotes in a raw string, add a pair of #s
     let quotes = r#"And then I said: "There is no escape!""#;
     println!("{}", quotes);
 
-        // If you need "# in your string, just use more #s in the delimiter.
-            // You can use up to 255 #s.
+    // If you need "# in your string, just use more #s in the delimiter.
+    // You can use up to 255 #s.
     let longer_delimiter = r###"A string with "# in it. And even "##!"###;
     println!("{}", longer_delimiter);
 
     // byte strings
-        // Note that this is not actually a `&str`
+    // Note that this is not actually a `&str`
     let bytestring: &[u8; 21] = b"this is a byte string";
 
-        // Byte arrays don't have the `Display` trait, so printing them is a bit limited
+    // Byte arrays don't have the `Display` trait, so printing them is a bit limited
     println!("\nA byte string: {:?}", bytestring);
 
-        // Byte strings can have byte escapes...
+    // Byte strings can have byte escapes...
     let escaped = b"\x52\x75\x73\x74 as bytes";
-        // ...but no unicode escapes
+    // ...but no unicode escapes
     // let escaped = b"\u{211D} is not allowed";
     println!("Some escaped bytes: {:?}", escaped);
 
-
-        // Raw byte strings work just like raw strings
+    // Raw byte strings work just like raw strings
     let raw_bytestring = br"\u{211D} is not escaped here";
     println!("{:?}", raw_bytestring);
 
-        // Converting a byte array to `str` can fail
+    // Converting a byte array to `str` can fail
     if let Ok(my_str) = str::from_utf8(raw_bytestring) {
         println!("And the same as text: '{}'", my_str);
     }
@@ -120,10 +120,10 @@ pub fn main() {
     let _quotes = br#"You can also use "fancier" formatting, \
                     like with normal raw strings"#;
 
-        // Byte strings don't have to be UTF-8
+    // Byte strings don't have to be UTF-8
     let shift_jis = b"\x82\xe6\x82\xa8\x82\xb1\x82\xbb"; // "ようこそ" in SHIFT-JIS
 
-        // But then they can't always be converted to `str`
+    // But then they can't always be converted to `str`
     match str::from_utf8(shift_jis) {
         Ok(my_str) => println!("Conversion successful: '{}'", my_str),
         Err(e) => println!("Conversion failed: {:?}", e),

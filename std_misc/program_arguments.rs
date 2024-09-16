@@ -2,9 +2,8 @@
 // Alternatively, there are numerous crates that can provide extra functionality when creating command-line applications. One of the more popular command line argument crates being clap
 
 use std::env;
-    // - after `cargo run`, run `./target/debug/rust_by_example 1 2 3`
-        // - expected output is `y path is ./target/debug/rust_by_example. \nI got 3 arguments: ["1", "2", "3"].`
-
+// - after `cargo run`, run `./target/debug/rust_by_example 1 2 3`
+// - expected output is `y path is ./target/debug/rust_by_example. \nI got 3 arguments: ["1", "2", "3"].`
 
 fn increase(number: i32) {
     println!("{}", number + 1);
@@ -15,11 +14,13 @@ fn decrease(number: i32) {
 }
 
 fn help() {
-    println!("usage:
+    println!(
+        "usage:
 match_args <string>
     Check whether given string is the answer.
 match_args {{increase|decrease}} <integer>
-    Increase or decrease given integer by one.");
+    Increase or decrease given integer by one."
+    );
 }
 
 pub fn main() {
@@ -37,13 +38,11 @@ pub fn main() {
         // no arguments passed
         1 => {
             println!("My name is 'match_args'. Try passing some arguments!");
-        },
+        }
         // one argument passed
-        2 => {
-            match args[1].parse() {
-                Ok(42) => println!("This is the answer!"),
-                _ => println!("This is not the answer."),
-            }
+        2 => match args[1].parse() {
+            Ok(42) => println!("This is the answer!"),
+            _ => println!("This is not the answer."),
         },
         // one command and one argument passed
         3 => {
@@ -51,14 +50,12 @@ pub fn main() {
             let num = &args[2];
             // parse the number
             let number: i32 = match num.parse() {
-                Ok(n) => {
-                    n
-                },
+                Ok(n) => n,
                 Err(_) => {
                     eprintln!("error: second argument not an integer");
                     help();
                     return;
-                },
+                }
             };
             // parse the command
             match &cmd[..] {
@@ -67,9 +64,9 @@ pub fn main() {
                 _ => {
                     eprintln!("error: invalid command");
                     help();
-                },
+                }
             }
-        },
+        }
         // all the other cases
         _ => {
             // show a help message

@@ -1,8 +1,8 @@
 // An alternative to boxing errors is to wrap them in your own error type
 use std::error;
 use std::error::Error;
-use std::num::ParseIntError;
 use std::fmt;
+use std::num::ParseIntError;
 
 type Result<T> = std::result::Result<T, DoubleError>;
 
@@ -17,13 +17,11 @@ enum DoubleError {
 impl fmt::Display for DoubleError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match *self {
-            DoubleError::EmptyVec =>
-                write!(f, "please use a vector with at least one element"),
+            DoubleError::EmptyVec => write!(f, "please use a vector with at least one element"),
             // The wrapped error contains additional information and is available
-                // - via the source() method.
-                // - what is `..` for?
-            DoubleError::Parse(..) =>
-                write!(f, "the provided string could not be parsed as int"),
+            // - via the source() method.
+            // - what is `..` for?
+            DoubleError::Parse(..) => write!(f, "the provided string could not be parsed as int"),
         }
     }
 }
@@ -60,13 +58,13 @@ fn double_first(vec: Vec<&str>) -> Result<i32> {
 
 fn print(result: Result<i32>) {
     match result {
-        Ok(n)  => println!("The first doubled is {}", n),
+        Ok(n) => println!("The first doubled is {}", n),
         Err(e) => {
             println!("Error: {}", e);
             if let Some(source) = e.source() {
                 println!("  Caused by: {}", source);
             }
-        },
+        }
     }
 }
 

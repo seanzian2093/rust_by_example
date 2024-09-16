@@ -1,6 +1,6 @@
 // The panic! macro can be used to generate a panic and start unwinding its stack
-    // - while unwinding, the runtime will take care of freeing all the resources owned by the thread
-        // - by calling the destructor of all its objects.
+// - while unwinding, the runtime will take care of freeing all the resources owned by the thread
+// - by calling the destructor of all its objects.
 
 // When dealing with programs with only one thread, panic! will cause the program to report the panic message and exit.
 // Re-implementation of integer division (/)

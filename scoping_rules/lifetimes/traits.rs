@@ -1,5 +1,5 @@
-// Annotation of lifetimes in trait methods basically are similar to functions. 
-    // - impl may have annotation of lifetimes too.
+// Annotation of lifetimes in trait methods basically are similar to functions.
+// - impl may have annotation of lifetimes too.
 
 // A struct with annotation of lifetimes.
 #![allow(dead_code)]
@@ -11,9 +11,7 @@ struct Borrowed<'a> {
 // Annotate lifetimes to impl.
 impl<'a> Default for Borrowed<'a> {
     fn default() -> Self {
-        Self {
-            x: &10,
-        }
+        Self { x: &10 }
     }
 }
 

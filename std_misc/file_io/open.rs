@@ -1,9 +1,9 @@
 // The open function opens a file in read-only mode.
-    // - returns a File type
+// - returns a File type
 // A File owns
-    // - a resource
-    // - the file descriptor 
-    // - takes care of closing the file when it is droped.
+// - a resource
+// - the file descriptor
+// - takes care of closing the file when it is droped.
 use std::fs::File;
 use std::io::prelude::*;
 use std::path::Path;

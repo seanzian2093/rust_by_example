@@ -1,10 +1,10 @@
 // Configuration conditional checks are possible through two different operators:
-    // - the cfg attribute: `#[cfg(...)]` in attribute position
-        // - enables conditional compilation, i.e., remove code from compilation
-    // - the cfg! macro: `cfg!(...)` in boolean expressions
-        // - conditionally evaluates to true or false literals allowing for checks at run-time. 
-        // - does not remove code
-    // - both utilize identical argument syntax.
+// - the cfg attribute: `#[cfg(...)]` in attribute position
+// - enables conditional compilation, i.e., remove code from compilation
+// - the cfg! macro: `cfg!(...)` in boolean expressions
+// - conditionally evaluates to true or false literals allowing for checks at run-time.
+// - does not remove code
+// - both utilize identical argument syntax.
 
 // This function only gets compiled if the target OS is linux
 #[cfg(target_os = "linux")]
@@ -28,5 +28,3 @@ pub fn main() {
         println!("Yes. It's definitely *not* linux!");
     }
 }
-
-

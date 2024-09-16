@@ -1,11 +1,11 @@
 // When shared ownership between threads is needed, Arc(Atomically Reference Counted) can be used
-// This struct, via the Clone implementation can create a reference pointer for the location of a value in the memory heap while 
-    // - increasing the reference counter
-    // - shares ownership between threads
-    // - when the last reference pointer to a value is out of scope, the variable is dropped.
-use std::time::Duration;
+// This struct, via the Clone implementation can create a reference pointer for the location of a value in the memory heap while
+// - increasing the reference counter
+// - shares ownership between threads
+// - when the last reference pointer to a value is out of scope, the variable is dropped.
 use std::sync::Arc;
 use std::thread;
+use std::time::Duration;
 
 pub fn main() {
     // This variable declaration is where its value is specified.

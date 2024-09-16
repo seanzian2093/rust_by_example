@@ -1,7 +1,7 @@
-// A type can implement many different traits. What if two traits both require the same name for a function? 
-    // - e.g., many traits might have a method named get(). They might even have different return types!
-    // - because each trait implementation gets its own impl block, it's clear which trait's get method you're implementing.
-    // - when calling those methods, to disambiguate between them, we have to use Fully Qualified Syntax.
+// A type can implement many different traits. What if two traits both require the same name for a function?
+// - e.g., many traits might have a method named get(). They might even have different return types!
+// - because each trait implementation gets its own impl block, it's clear which trait's get method you're implementing.
+// - when calling those methods, to disambiguate between them, we have to use Fully Qualified Syntax.
 
 trait UsernameWidget {
     // Get the selected username out of this widget
@@ -38,7 +38,7 @@ pub fn main() {
     };
 
     // If you uncomment this line, you'll get an error saying "multiple `get` found"
-        // - because, after all, there are multiple methods named `get`.
+    // - because, after all, there are multiple methods named `get`.
     // println!("{}", form.get());
 
     // Use fully qualified syntax

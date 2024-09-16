@@ -1,2 +1,2 @@
-pub mod problem;
 pub mod associated_types;
+pub mod problem;

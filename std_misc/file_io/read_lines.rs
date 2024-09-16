@@ -13,22 +13,22 @@ fn read_lines_native(filename: &str) -> Vec<String> {
     result
 }
 
-// Since the method lines() returns an iterator over the lines in the file, we can also 
-    // - perform a map inline and 
-    // - collect the results, yielding a more concise and fluent expression.
+// Since the method lines() returns an iterator over the lines in the file, we can also
+// - perform a map inline and
+// - collect the results, yielding a more concise and fluent expression.
 
 fn read_lines_map(filename: &str) -> Vec<String> {
-    read_to_string(filename) 
-        .unwrap()  // panic on possible file-reading errors
-        .lines()  // split the string into an iterator of string slices
-        .map(String::from)  // make each slice into a string
-        .collect()  // gather them together into a vector
+    read_to_string(filename)
+        .unwrap() // panic on possible file-reading errors
+        .lines() // split the string into an iterator of string slices
+        .map(String::from) // make each slice into a string
+        .collect() // gather them together into a vector
 }
-    
+
 // A more effiecient approach
-    // - here we pass ownership of the open File to a BufReader struct
-    // - BufReader uses an internal buffer to reduce intermediate allocations.
-    // - update read_lines to return an iterator instead of allocating new String objects in memory for each line.
+// - here we pass ownership of the open File to a BufReader struct
+// - BufReader uses an internal buffer to reduce intermediate allocations.
+// - update read_lines to return an iterator instead of allocating new String objects in memory for each line.
 
 pub fn main() {
     println!("\nread_line_native()");
@@ -52,7 +52,9 @@ pub fn main() {
 // The output is wrapped in a Result to allow matching on errors.
 // Returns an Iterator to the Reader of the lines of the file.
 fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
-where P: AsRef<Path>, {
+where
+    P: AsRef<Path>,
+{
     let file = File::open(filename)?;
     Ok(io::BufReader::new(file).lines())
 }
